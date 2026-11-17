@@ -51,4 +51,7 @@ if __name__ == '__main__':
 
     summary = f'{RESULTS}/summary.csv'
     rows = pd.DataFrame({'run': name, 'split': args.split, 'measure': means.index, 'value': means.values.round(4)})
-    rows.to_csv(summary, mode='a', header=not os.path.exists(summary), index=False)
+    if os.path.exists(summary):
+        old = pd.read_csv(summary)
+        rows = pd.concat([old[old['run'] != name], rows])
+    rows.to_csv(summary, index=False)
