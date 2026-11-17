@@ -1,0 +1,8 @@
+pyserini
+faiss-cpu
+ir_measures
+pandas
+scipy
+scikit-learn
+transformers>=4.51
+accelerate
